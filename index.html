@@ -208,12 +208,22 @@ Print PDF Report
 
 
 <div class="box">
-
 <h3>⚙️ System Summary</h3>
- <div class="box">
+
+<button onclick="summary()">
+Show Summary
+</button>
+
+<div id="summaryResult">
+...
+</div>
+
+<div class="box">
 
 <h3>🏠 Roof Layout Designer</h3>
 
+...
+</div>
 <label>Roof Length (m)</label>
 <input id="roofLength" type="number" placeholder="40">
 
@@ -250,17 +260,7 @@ Generate Roof Layout
 </div>
 </select>
 
-<label>Panel Length (mm)</label>
-<input id="panelLength" type="number" value="2382">
 
-<label>Panel Width (mm)</label>
-<input id="panelWidth" type="number" value="1134">
-
-<button onclick="roofLayout()">Generate Roof Layout</button>
-
-<canvas id="roofCanvas" width="700" height="450"></canvas>
-
-<p id="roofResult"></p>
 
 </div>
 
