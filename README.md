@@ -1,2 +1,2 @@
 # R-Kar
-easy calculate solar
+Amber Light Solar Tools
