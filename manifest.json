@@ -1,0 +1,16 @@
+{
+  "name": "Amber Light Solar Tool",
+  "short_name": "Solar Tool",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f2f2f2",
+  "theme_color": "#008000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
