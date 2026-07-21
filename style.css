@@ -1,0 +1,116 @@
+body{
+    font-family:Arial, sans-serif;
+    background:#f2f2f2;
+    padding:15px;
+    margin:0;
+}
+
+
+h2{
+    text-align:center;
+    color:#006400;
+}
+
+
+.box{
+
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+
+}
+
+
+input,
+select,
+button{
+
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+
+    font-size:16px;
+
+    box-sizing:border-box;
+
+}
+
+
+
+button{
+
+    background:#008000;
+
+    color:white;
+
+    border:0;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#006400;
+
+}
+
+
+
+.result{
+
+    background:#e8ffe8;
+
+    padding:10px;
+
+    border-radius:8px;
+
+}
+
+
+
+label{
+
+    font-weight:bold;
+
+}
+
+
+
+canvas{
+
+    width:100%;
+
+    border:1px solid #000;
+
+    background:white;
+
+}
+
+
+
+/* Mobile View */
+
+@media(max-width:600px){
+
+    body{
+
+        padding:10px;
+
+    }
+
+
+    h2{
+
+        font-size:22px;
+
+    }
+
+
+}
