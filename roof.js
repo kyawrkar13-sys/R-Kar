@@ -62,7 +62,7 @@ Landscape : ${landscape} Panels (${landscapeKW.toFixed(2)} kWp)<br><br>
 `;
 
 }
-[ 22 July 2026 05:36 ] ⁨Rkar Kyaw⁩: let canvas=document.getElementById("roofCanvas");
+let canvas=document.getElementById("roofCanvas");
 let ctx=canvas.getContext("2d");
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
