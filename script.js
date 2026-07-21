@@ -390,7 +390,7 @@ document.getElementById("date").value = date;
 
 
 }
-[ 22 July 2026 04:47 ] ⁨Rkar Kyaw⁩: function roofLayout(){
+function roofLayout(){
 
 let roofL=parseFloat(document.getElementById("roofLength").value);
 let roofW=parseFloat(document.getElementById("roofWidth").value);
