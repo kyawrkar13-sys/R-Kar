@@ -62,3 +62,40 @@ Landscape : ${landscape} Panels (${landscapeKW.toFixed(2)} kWp)<br><br>
 `;
 
 }
+[ 22 July 2026 05:36 ] ⁨Rkar Kyaw⁩: let canvas=document.getElementById("roofCanvas");
+let ctx=canvas.getContext("2d");
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+
+// scale
+let scale = Math.min(
+(canvas.width-50)/roofL,
+(canvas.height-50)/roofW
+);
+
+
+// Roof boundary
+ctx.strokeRect(
+20,
+20,
+roofL*scale,
+roofW*scale
+);
+
+
+// Draw Landscape panels (recommended preview)
+for(let r=0;r<lRows;r++){
+
+for(let c=0;c<lCols;c++){
+
+ctx.strokeRect(
+20+c*panelL*scale,
+20+r*panelW*scale,
+panelL*scale,
+panelW*scale
+);
+
+}
+
+}
