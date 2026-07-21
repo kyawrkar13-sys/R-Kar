@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Amber Light Solar Tools</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h2>☀️ AMBER LIGHT SOLAR TOOL</h2>
+
+
+<div class="box">
+
+<h3>Customer Information</h3>
+
+<input id="customer" placeholder="Customer Name">
+
+<input id="project" placeholder="Project Name">
+
+<input id="date" type="date">
+
+</div>
+
+
+
+<div class="box">
+
+<h3>Solar Panel Design</h3>
+
+
+<label>Area (m²)</label>
+
+<input id="area" type="number">
+
+
+<label>Panel Watt</label>
+
+<select id="panel">
+
+<option value="615">615W</option>
+<option value="650" selected>650W</option>
+<option value="700">700W</option>
+<option value="720">720W</option>
+<option value="750">750W</option>
+
+</select>
+
+
+<label>Panel Quantity (Auto)</label>
+
+<input id="qty" type="number" readonly>
+
+
+<button onclick="calcSolar()">
+Calculate Solar
+</button>
+
+
+</div>
+
+
+
+<div class="box result">
+
+<h3>Solar Result</h3>
+
+<p id="solarResult">
+Panel : - pcs<br>
+Power : - kW
+</p>
+
+</div>
+
+
+
+
+<div class="box">
+
+<h3>🔋 Battery System</h3>
+
+
+<label>Battery Voltage</label>
+
+<input id="batV" placeholder="Example: 512">
+
+
+<label>Battery kWh</label>
+
+<input id="batKwh" placeholder="Example: 100">
+
+
+<button onclick="calcBattery()">
+Battery Calculate
+</button>
+
+
+<p id="batResult">
+Battery Voltage : - V<br>
+Capacity : - Ah
+</p>
+
+
+</div>
+
+
+
+<div class="box">
+
+<h3>⚡ Inverter</h3>
+
+
+<label>Load kW</label>
+
+<input id="load" placeholder="Example: 100">
+
+
+<button onclick="calcInverter()">
+Select Inverter
+</button>
+
+
+<p id="invResult">
+Recommended Inverter : - kW
+</p>
+
+
+</div>
+<!-- STRING DESIGN + MPPT CHECK -->
+
+<div class="box">
+
+<h3>🔋 String Design</h3>
+
+<label>Panel Voc (V)</label>
+
+<input id="voc" placeholder="Example: 49.5">
+
+
+<label>Series Panel Qty</label>
+
+<input id="series" placeholder="Example: 12">
+
+
+<label>MPPT Max Voltage</label>
+
+<input id="mppt" placeholder="Example: 1000">
+
+
+<button onclick="stringCheck()">
+String Check
+</button>
+
+
+<p id="stringResult"></p>
+
+</div>
+
+
+
+<!-- SLD -->
+
+<div class="box">
+
+<h3>⚡ Single Line Diagram (SLD)</h3>
+
+
+<canvas id="sld" width="600" height="350"></canvas>
+
+
+<button onclick="drawSLD()">
+Generate SLD
+</button>
+
+
+</div>
+
+
+
+<!-- REPORT -->
+
+<div class="box">
+
+<h3>📄 Report</h3>
+
+
+<button onclick="printReport()">
+Print PDF Report
+</button>
+
+
+</div>
+
+
+
+<!-- SUMMARY -->
+
+<div class="box">
+
+<h3>⚙️ System Summary</h3>
+
+
+<button onclick="summary()">
+Show Summary
+</button>
+
+
+<div id="summaryResult">
+
+<b>Customer:</b><br>
+<b>Project:</b><br>
+<b>Panel:</b><br>
+<b>Quantity:</b><br>
+<b>Date:</b>
+
+</div>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
