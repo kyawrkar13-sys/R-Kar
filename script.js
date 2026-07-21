@@ -390,3 +390,55 @@ document.getElementById("date").value = date;
 
 
 }
+[ 22 July 2026 04:47 ] ⁨Rkar Kyaw⁩: function roofLayout(){
+
+let roofL=parseFloat(document.getElementById("roofLength").value);
+let roofW=parseFloat(document.getElementById("roofWidth").value);
+
+let panelL=parseFloat(document.getElementById("panelLength").value)/1000;
+let panelW=parseFloat(document.getElementById("panelWidth").value)/1000;
+
+let eff=parseFloat(document.getElementById("roofEff").value)/100;
+
+let roofArea=roofL*roofW;
+let usableArea=roofArea*eff;
+
+let cols=Math.floor(roofL/panelL);
+let rows=Math.floor((roofW*eff)/panelW);
+
+let qty=cols*rows;
+
+let kw=(qty*650)/1000;
+
+document.getElementById("roofResult").innerHTML=
+
+"Roof Area : "+roofArea.toFixed(2)+" m²<br>"+
+"Usable Area : "+usableArea.toFixed(2)+" m²<br>"+
+"Panel Qty : "+qty+" pcs<br>"+
+"PV Size : "+kw.toFixed(2)+" kWp";
+
+let c=document.getElementById("roofCanvas");
+let x=c.getContext("2d");
+
+x.clearRect(0,0,c.width,c.height);
+
+let scale=12;
+
+x.strokeRect(20,20,roofL*scale,roofW*scale);
+
+for(let r=0;r<rows;r++){
+
+for(let col=0;col<cols;col++){
+
+x.strokeRect(
+20+col*panelL*scale,
+20+r*panelW*scale,
+panelL*scale,
+panelW*scale
+);
+
+}
+
+}
+
+}
