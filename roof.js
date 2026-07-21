@@ -97,5 +97,39 @@ panelW*scale
 );
 
 }
+let canvas=document.getElementById("roofCanvas");
+let ctx=canvas.getContext("2d");
 
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+let scale = Math.min(
+(canvas.width-50)/roofL,
+(canvas.height-50)/roofW
+);
+
+
+// Roof Border
+ctx.strokeRect(
+20,
+20,
+roofL*scale,
+roofW*scale
+);
+
+
+// Draw Landscape Layout
+for(let r=0;r<lRows;r++){
+
+    for(let c=0;c<lCols;c++){
+
+        ctx.strokeRect(
+        20 + c*panelL*scale,
+        20 + r*panelW*scale,
+        panelL*scale,
+        panelW*scale
+        );
+
+    }
+
+}
 }
