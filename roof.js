@@ -106,7 +106,6 @@ roofL * scale,
 roofW * scale
 );
 
-ctx.stroke();
 // ===== WALKWAY AREA =====
 
 let walkY = 
@@ -150,6 +149,9 @@ ctx.rect(
 (roofL - setback*2) * scale,
 (roofW - setback*2) * scale
 );
+  
+
+
 
 ctx.stroke();
 
