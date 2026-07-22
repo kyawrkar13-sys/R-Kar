@@ -139,7 +139,8 @@ ctx.fillText(
 30,
 45
 );
-[ 22 July 2026 07:05 ] ⁨Rkar Kyaw⁩: // ===== WALKWAY AREA =====
+}
+// ===== WALKWAY AREA =====
 
 let walkY = 
 20 + setback * scale + 
