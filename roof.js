@@ -80,6 +80,7 @@ Landscape : ${landscapeQty} Panels<br><br>
 ⭐ Recommended : ${recommend}
 `;
 
+
 // Canvas Drawing
 
 let canvas = document.getElementById("roofCanvas");
@@ -90,52 +91,80 @@ ctx.clearRect(0,0,canvas.width,canvas.height);
 
 // Scale
 let scale = Math.min(
-(canvas.width-80)/roofL,
-(canvas.height-80)/roofW
+(canvas.width-60)/roofL,
+(canvas.height-60)/roofW
 );
 
 
-// ===== ROOF BORDER =====
+// Roof Border
+
+ctx.strokeRect(
+20,
+20,
+roofL*scale,
+roofW*scale
+);
+
+
+// Usable Area (Setback)
+
+ctx.strokeRect(
+20 + setback*scale,
+20 + setback*scale,
+(roofL-setback*2)*scale,
+(roofW-setback*2)*scale
+);
+
+
+// Draw panels
+
+for(let r=0;r<landscapeRows;r++){
+
+    for(let c=0;c<landscapeCols;c++){
+
+        ctx.strokeRect(
+        20 + setback*scale + c*panelL*scale,
+        20 + setback*scale + r*panelW*scale,
+        panelL*scale,
+        panelW*scale
+        );
+
+    }
+
+}
+
+
+// Walkway 표시
+
+let walkY = 20 + setback*scale + 
+(roofW-setback*2-walkway)*scale;
+
 
 ctx.beginPath();
+ctx.moveTo(
+20 + setback*scale,
+walkY
+);
 
-ctx.rect(
-20,
-20,
-roofL * scale,
-roofW * scale
+ctx.lineTo(
+20 + (roofL-setback)*scale,
+walkY
 );
 
 ctx.stroke();
 
-
-// ===== SETBACK BORDER =====
-
-ctx.beginPath();
-
-ctx.rect(
-20 + setback * scale,
-20 + setback * scale,
-(roofL - setback*2) * scale,
-(roofW - setback*2) * scale
-);
-
-ctx.stroke();
-
-
-// ===== TEXT =====
 
 ctx.font="14px Arial";
 
 ctx.fillText(
-"Roof Edge",
-25,
-15
+"Walkway",
+30,
+walkY-5
 );
 
 ctx.fillText(
 "Setback",
 30,
-45
+40
 );
 }
