@@ -81,8 +81,7 @@ Landscape : ${landscapeQty} Panels<br><br>
 `;
 
 
-
- // Canvas Drawing
+// Canvas Drawing
 
 let canvas = document.getElementById("roofCanvas");
 let ctx = canvas.getContext("2d");
@@ -92,12 +91,12 @@ ctx.clearRect(0,0,canvas.width,canvas.height);
 
 // Scale
 let scale = Math.min(
-(canvas.width-80)/roofL,
-(canvas.height-80)/roofW
+(canvas.width-60)/roofL,
+(canvas.height-60)/roofW
 );
 
 
-// Roof Outer Line
+// Roof Border
 
 ctx.strokeRect(
 20,
@@ -107,7 +106,7 @@ roofW*scale
 );
 
 
-// Setback Area
+// Usable Area (Setback)
 
 ctx.strokeRect(
 20 + setback*scale,
@@ -117,68 +116,54 @@ ctx.strokeRect(
 );
 
 
-// Walkway Line
+// Draw panels
 
-let walkwayY = 20 + (roofW-setback*2-walkway)*scale;
+for(let r=0;r<landscapeRows;r++){
+
+    for(let c=0;c<landscapeCols;c++){
+
+        ctx.strokeRect(
+        20 + setback*scale + c*panelL*scale,
+        20 + setback*scale + r*panelW*scale,
+        panelL*scale,
+        panelW*scale
+        );
+
+    }
+
+}
+
+
+// Walkway 표시
+
+let walkY = 20 + setback*scale + 
+(roofW-setback*2-walkway)*scale;
+
 
 ctx.beginPath();
-
 ctx.moveTo(
 20 + setback*scale,
-walkwayY
+walkY
 );
 
 ctx.lineTo(
 20 + (roofL-setback)*scale,
-walkwayY
+walkY
 );
 
 ctx.stroke();
 
-
-// Draw Landscape Panel inside usable area
-
-for(let r=0;r<landscapeRows;r++){
-
-for(let c=0;c<landscapeCols;c++){
-
-
-let x =
-20 + setback*scale + c*panelL*scale;
-
-
-let y =
-20 + setback*scale + r*panelW*scale;
-
-
-ctx.strokeRect(
-
-x,
-y,
-
-panelL*scale,
-panelW*scale
-
-);
-
-
-}
-
-}
-
-
-// Labels
 
 ctx.font="14px Arial";
 
 ctx.fillText(
 "Walkway",
 30,
-walkwayY-5
+walkY-5
 );
 
 ctx.fillText(
 "Setback",
-25,
-35
+30,
+40
 );
