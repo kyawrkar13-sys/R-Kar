@@ -81,7 +81,7 @@ Landscape : ${landscapeQty} Panels<br><br>
 `;
 
 
-[ 22 July 2026 07:03 ] ⁨Rkar Kyaw⁩: // Canvas Drawing
+// Canvas Drawing
 
 let canvas = document.getElementById("roofCanvas");
 let ctx = canvas.getContext("2d");
