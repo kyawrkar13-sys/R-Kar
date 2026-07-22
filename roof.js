@@ -94,9 +94,9 @@ let scale = Math.min(
 (canvas.height-80)/roofW
 );
 
+ctx.stroke();
 
-// ===== ROOF BORDER =====
-
+  // ===== ROOF BORDER =====
 ctx.beginPath();
 
 ctx.rect(
@@ -105,7 +105,7 @@ ctx.rect(
 roofL * scale,
 roofW * scale
 );
-
+ctx.stroke();
 // ===== WALKWAY AREA =====
 
 let walkY = 
