@@ -96,7 +96,7 @@ let scale = Math.min(
 );
 
 
-[ 22 July 2026 06:59 ] ⁨Rkar Kyaw⁩: // Roof Border + Setback
+// Roof Border + Setback
 
 ctx.lineWidth = 2;
 
