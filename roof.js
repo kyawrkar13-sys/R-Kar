@@ -94,9 +94,9 @@ let scale = Math.min(
 (canvas.height-80)/roofW
 );
 
-ctx.stroke();
 
-  // ===== ROOF BORDER =====
+// ===== ROOF BORDER =====
+
 ctx.beginPath();
 
 ctx.rect(
@@ -105,39 +105,9 @@ ctx.rect(
 roofL * scale,
 roofW * scale
 );
-ctx.stroke();
-// ===== WALKWAY AREA =====
-
-let walkY = 
-20 + setback * scale + 
-(roofW - setback*2 - walkway) * scale;
-
-
-// Draw walkway line
-
-ctx.beginPath();
-
-ctx.moveTo(
-20 + setback*scale,
-walkY
-);
-
-ctx.lineTo(
-20 + (roofL-setback)*scale,
-walkY
-);
 
 ctx.stroke();
 
-// Walkway Label
-
-ctx.font="14px Arial";
-
-ctx.fillText(
-"Walkway",
-30,
-walkY-5
-);
 
 // ===== SETBACK BORDER =====
 
@@ -149,9 +119,6 @@ ctx.rect(
 (roofL - setback*2) * scale,
 (roofW - setback*2) * scale
 );
-  
-
-
 
 ctx.stroke();
 
