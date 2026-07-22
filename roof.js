@@ -107,7 +107,38 @@ roofW * scale
 );
 
 ctx.stroke();
+[ 22 July 2026 07:05 ] ⁨Rkar Kyaw⁩: // ===== WALKWAY AREA =====
 
+let walkY = 
+20 + setback * scale + 
+(roofW - setback*2 - walkway) * scale;
+
+
+// Draw walkway line
+
+ctx.beginPath();
+
+ctx.moveTo(
+20 + setback*scale,
+walkY
+);
+
+ctx.lineTo(
+20 + (roofL-setback)*scale,
+walkY
+);
+
+ctx.stroke();
+
+// Walkway Label
+
+ctx.font="14px Arial";
+
+ctx.fillText(
+"Walkway",
+30,
+walkY-5
+);
 
 // ===== SETBACK BORDER =====
 
