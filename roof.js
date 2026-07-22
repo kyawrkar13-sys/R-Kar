@@ -96,13 +96,25 @@ let scale = Math.min(
 );
 
 
-// Roof Border
+[ 22 July 2026 06:59 ] ⁨Rkar Kyaw⁩: // Roof Border + Setback
 
+ctx.lineWidth = 2;
+
+// Outer Roof Border
 ctx.strokeRect(
 20,
 20,
-roofL*scale,
-roofW*scale
+roofL * scale,
+roofW * scale
+);
+
+
+// Setback Border
+ctx.strokeRect(
+20 + setback * scale,
+20 + setback * scale,
+(roofL - setback*2) * scale,
+(roofW - setback*2) * scale
 );
 
 
