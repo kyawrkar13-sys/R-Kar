@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[ 22 July 2026 06:11 ] ⁨Rkar Kyaw⁩: <!DOCTYPE html>
 <html>
 <head>
 
@@ -20,8 +20,7 @@ navigator.serviceWorker.register("service-worker.js");
 
 }
 
-<script src="script.js"></script>
-<script src="roof.js"></script>
+</script>
 <body>
 <img src="icon.png" width="80" alt="Amber Light Solar">
 <h2>☀️ AMBER LIGHT SOLAR TOOL</h2>
@@ -198,10 +197,7 @@ Print PDF Report
 
 
 ...
- <div class="box">
-
-<h3>🏠 Roof Layout Designer</h3>
-
+</div>
 <label>Roof Length (m)</label>
 <input id="roofLength" type="number" placeholder="40">
 
@@ -220,6 +216,13 @@ Print PDF Report
 <label>Edge Setback (m)</label>
 <input id="setback" type="number" value="0.5">
 
+<label>Panel Orientation</label>
+
+<select id="orientation">
+<option value="portrait">Portrait</option>
+<option value="landscape">Landscape</option>
+</select>
+
 <button onclick="roofLayout()">
 Generate Roof Layout
 </button>
@@ -227,10 +230,11 @@ Generate Roof Layout
 <canvas id="roofCanvas" width="700" height="450"></canvas>
 
 <p id="roofResult"></p>
+
 </div>
+</select>
 
-
- <div class="box">
+<div class="box">
 <h3>⚙️ System Summary</h3>
 
 <button onclick="summary()">
@@ -239,6 +243,10 @@ Show Summary
 
 <div id="summaryResult">
 </div>
+
+<div class="box">
+
+<h3>🏠 Roof Layout Designer</h3>
 
 
 
@@ -251,5 +259,11 @@ Show Summary
 
 </div>
 
+
+</div>
+ <script src="script.js"></script>
+<script src="roof.js"></script>
+
+</body>
 
 </html>
