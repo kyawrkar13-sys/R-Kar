@@ -82,49 +82,81 @@ Landscape : ${landscapeQty} Panels<br><br>
 
 
 
-// Canvas Drawing
+ // Canvas Drawing
 
 let canvas = document.getElementById("roofCanvas");
-
 let ctx = canvas.getContext("2d");
-
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
 
 // Scale
-
 let scale = Math.min(
-(canvas.width-40)/usableL,
-(canvas.height-40)/usableW
+(canvas.width-80)/roofL,
+(canvas.height-80)/roofW
 );
 
 
-// Roof outline
+// Roof Outer Line
 
 ctx.strokeRect(
 20,
 20,
-usableL*scale,
-usableW*scale
+roofL*scale,
+roofW*scale
 );
 
 
-// Draw recommended Landscape
+// Setback Area
+
+ctx.strokeRect(
+20 + setback*scale,
+20 + setback*scale,
+(roofL-setback*2)*scale,
+(roofW-setback*2)*scale
+);
+
+
+// Walkway Line
+
+let walkwayY = 20 + (roofW-setback*2-walkway)*scale;
+
+ctx.beginPath();
+
+ctx.moveTo(
+20 + setback*scale,
+walkwayY
+);
+
+ctx.lineTo(
+20 + (roofL-setback)*scale,
+walkwayY
+);
+
+ctx.stroke();
+
+
+// Draw Landscape Panel inside usable area
 
 for(let r=0;r<landscapeRows;r++){
 
 for(let c=0;c<landscapeCols;c++){
 
 
+let x =
+20 + setback*scale + c*panelL*scale;
+
+
+let y =
+20 + setback*scale + r*panelW*scale;
+
+
 ctx.strokeRect(
 
-20 + c*panelL*scale,
-
-20 + r*panelW*scale,
+x,
+y,
 
 panelL*scale,
-
 panelW*scale
 
 );
@@ -135,4 +167,18 @@ panelW*scale
 }
 
 
-}
+// Labels
+
+ctx.font="14px Arial";
+
+ctx.fillText(
+"Walkway",
+30,
+walkwayY-5
+);
+
+ctx.fillText(
+"Setback",
+25,
+35
+);
