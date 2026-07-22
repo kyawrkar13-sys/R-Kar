@@ -1,4 +1,4 @@
-function roofLayout(){
+[ 22 July 2026 06:33 ] ⁨Rkar Kyaw⁩: function roofLayout(){
 
 let roofL = parseFloat(document.getElementById("roofLength").value);
 let roofW = parseFloat(document.getElementById("roofWidth").value);
@@ -10,126 +10,129 @@ let walkway = parseFloat(document.getElementById("walkway").value);
 let setback = parseFloat(document.getElementById("setback").value);
 
 
-// usable roof area
+// Check input
+if(
+isNaN(roofL) ||
+isNaN(roofW) ||
+isNaN(panelL) ||
+isNaN(panelW)
+){
+alert("Please fill roof and panel size");
+return;
+}
+
+
+// Usable roof size
+
 let usableL = roofL - (setback * 2);
+
 let usableW = roofW - (setback * 2) - walkway;
 
 
-// Portrait calculation
-let pCols = Math.floor(usableL / panelW);
-let pRows = Math.floor(usableW / panelL);
+// Portrait
 
-let portrait = pCols * pRows;
+let portraitCols = Math.floor(usableL / panelW);
+let portraitRows = Math.floor(usableW / panelL);
 
-
-// Landscape calculation
-let lCols = Math.floor(usableL / panelL);
-let lRows = Math.floor(usableW / panelW);
-
-let landscape = lCols * lRows;
+let portraitQty = portraitCols * portraitRows;
 
 
-// kWp (650W example)
-let portraitKW = portrait * 650 / 1000;
-let landscapeKW = landscape * 650 / 1000;
+// Landscape
 
+let landscapeCols = Math.floor(usableL / panelL);
+let landscapeRows = Math.floor(usableW / panelW);
+
+let landscapeQty = landscapeCols * landscapeRows;
+
+
+// Recommend
 
 let recommend;
 
-if(landscape > portrait){
-recommend="Landscape";
-}
-else if(portrait > landscape){
-recommend="Portrait";
-}
-else{
-recommend="Same";
+if(landscapeQty > portraitQty){
+
+recommend = "Landscape";
+
+}else if(portraitQty > landscapeQty){
+
+recommend = "Portrait";
+
+}else{
+
+recommend = "Same";
+
 }
 
 
-document.getElementById("roofResult").innerHTML=
+// Result
+
+document.getElementById("roofResult").innerHTML =
 
 `
 Roof Area : ${(roofL*roofW).toFixed(2)} m²<br>
-Usable Length : ${usableL.toFixed(2)} m<br>
-Usable Width : ${usableW.toFixed(2)} m<br><br>
 
-Portrait : ${portrait} Panels (${portraitKW.toFixed(2)} kWp)<br>
+Usable Area : ${(usableL*usableW).toFixed(2)} m²<br><br>
 
-Landscape : ${landscape} Panels (${landscapeKW.toFixed(2)} kWp)<br><br>
+Portrait : ${portraitQty} Panels<br>
+
+Landscape : ${landscapeQty} Panels<br><br>
 
 ⭐ Recommended : ${recommend}
 `;
 
-}
-let canvas=document.getElementById("roofCanvas");
-let ctx=canvas.getContext("2d");
+
+
+// Canvas Drawing
+
+let canvas = document.getElementById("roofCanvas");
+
+let ctx = canvas.getContext("2d");
+
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
 
-// scale
+// Scale
+
 let scale = Math.min(
-(canvas.width-50)/roofL,
-(canvas.height-50)/roofW
+(canvas.width-40)/usableL,
+(canvas.height-40)/usableW
 );
 
 
-// Roof boundary
+// Roof outline
+
 ctx.strokeRect(
 20,
 20,
-roofL*scale,
-roofW*scale
+usableL*scale,
+usableW*scale
 );
 
 
-// Draw Landscape panels (recommended preview)
-for(let r=0;r<lRows;r++){
+// Draw recommended Landscape
 
-for(let c=0;c<lCols;c++){
+for(let r=0;r<landscapeRows;r++){
+
+for(let c=0;c<landscapeCols;c++){
+
 
 ctx.strokeRect(
-20+c*panelL*scale,
-20+r*panelW*scale,
+
+20 + c*panelL*scale,
+
+20 + r*panelW*scale,
+
 panelL*scale,
+
 panelW*scale
+
 );
+
 
 }
-let canvas=document.getElementById("roofCanvas");
-let ctx=canvas.getContext("2d");
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-let scale = Math.min(
-(canvas.width-50)/roofL,
-(canvas.height-50)/roofW
-);
-
-
-// Roof Border
-ctx.strokeRect(
-20,
-20,
-roofL*scale,
-roofW*scale
-);
-
-
-// Draw Landscape Layout
-for(let r=0;r<lRows;r++){
-
-    for(let c=0;c<lCols;c++){
-
-        ctx.strokeRect(
-        20 + c*panelL*scale,
-        20 + r*panelW*scale,
-        panelL*scale,
-        panelW*scale
-        );
-
-    }
 
 }
+
+
 }
